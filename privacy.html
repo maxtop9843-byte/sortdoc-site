@@ -37,7 +37,7 @@ have selected. This policy describes exactly what it does with your data.</p>
 </div>
 
 <h2>What SortDoc accesses</h2>
-<p>SortDoc requests two OAuth scopes, and no others:</p>
+<p>SortDoc's own code uses exactly two OAuth scopes:</p>
 <ul>
   <li><code>https://www.googleapis.com/auth/documents.currentonly</code> — permission to read
     and modify <strong>only the single document the add-on is currently open in</strong>. It
@@ -46,8 +46,15 @@ have selected. This policy describes exactly what it does with your data.</p>
   <li><code>https://www.googleapis.com/auth/script.container.ui</code> — permission to display
     the SortDoc menu and its message dialogs inside the Google Docs interface.</li>
 </ul>
-<p>SortDoc does not request access to Gmail, Google Calendar, Google Contacts, your Drive
-file list, or your Google account profile.</p>
+<p>When an app is distributed through the Google Workspace Marketplace, Google additionally
+includes two standard sign-in scopes on every listing —
+<code>userinfo.email</code> and <code>userinfo.profile</code> — so that the Marketplace can
+identify who is installing the app. These are added by the Marketplace platform and cannot be
+removed from a listing. <strong>SortDoc's code never reads them:</strong> it makes no call to
+any profile or identity API, and it does not store, log or transmit your name, email address
+or profile picture.</p>
+<p>SortDoc does not request access to Gmail, Google Calendar, Google Contacts, or your Drive
+file list.</p>
 
 <h2>How your document content is used</h2>
 <p>When you choose <em>Sort A → Z</em> or <em>Sort Z → A</em>, SortDoc reads the text of the
