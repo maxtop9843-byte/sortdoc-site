@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SortDoc — sort paragraphs in Google Docs</title>
+<meta name="description" content="A Google Docs add-on that sorts selected paragraphs or list items A-Z or Z-A while keeping their formatting.">
+<style>
+  :root { color-scheme: light dark; --fg:#202124; --bg:#fff; --muted:#5f6368; --line:#dadce0; --accent:#1a73e8; }
+  @media (prefers-color-scheme: dark) { :root { --fg:#e8eaed; --bg:#131314; --muted:#9aa0a6; --line:#3c4043; --accent:#8ab4f8; } }
+  * { box-sizing: border-box; }
+  body {
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; color: var(--fg); background: var(--bg);
+  }
+  a { color: var(--accent); }
+  header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+  .mark { width: 64px; height: 64px; border-radius: 14px; background: linear-gradient(#1a73e8, #1558b8); position: relative; flex: none; }
+  .mark i { position: absolute; background: #fff; border-radius: 3px; display: block; }
+  .mark i:nth-child(1) { left: 12px; top: 16px; width: 19px; height: 6px; }
+  .mark i:nth-child(2) { left: 12px; top: 29px; width: 27px; height: 6px; }
+  .mark i:nth-child(3) { left: 12px; top: 42px; width: 35px; height: 6px; }
+  h1 { font-size: 1.9rem; margin: 0; }
+  .tagline { color: var(--muted); margin: .2rem 0 0; }
+  h2 { font-size: 1.15rem; margin-top: 2.5rem; }
+  .demo { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin: 1.25rem 0; }
+  .demo pre { margin: 0; padding: .9rem 1.2rem; border: 1px solid var(--line); border-radius: 8px; font: 14px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .arrow { color: var(--muted); font-size: 1.3rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin: .35rem 0; }
+  .box { border-left: 3px solid var(--accent); padding: .75rem 1rem; background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 0 6px 6px 0; }
+  footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
+  footer a { margin-right: 1rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div>
+    <h1>SortDoc</h1>
+    <p class="tagline">Sort selected paragraphs or list items in Google Docs, without losing formatting.</p>
+  </div>
+</header>
+
+<div class="demo">
+  <pre>Banana
+Apple
+Cherry</pre>
+  <span class="arrow">→</span>
+  <pre>Apple
+Banana
+Cherry</pre>
+</div>
+
+<p>Select the lines you want in order, then choose
+<strong>Extensions → SortDoc → Sort A → Z</strong>. That is the whole product.</p>
+
+<h2>Formatting moves with the line</h2>
+<p>Most sorting tools read your lines out as plain text, sort the strings and type them back,
+which is why bold, links, headings and bullets tend to disappear. SortDoc moves the
+paragraphs themselves, so each line keeps its own formatting: bold, italic, underline,
+strikethrough, colours, highlights, hyperlinks, fonts, sizes, alignment, indentation,
+headings, bulleted lists and numbered lists.</p>
+
+<h2>It refuses rather than risk your document</h2>
+<p>If SortDoc cannot sort a selection safely, it changes nothing and says so. Selections
+spanning two document tabs or two table cells, selections with unselected content in the
+middle, and lines containing unverified elements are all refused — leaving the document
+exactly as it was.</p>
+
+<h2>Privacy</h2>
+<div class="box">
+  SortDoc makes no network requests. It has no server, no database and no analytics. Your
+  document content is never transmitted or stored anywhere, and the add-on can only access
+  the single document you open it in.
+</div>
+
+<h2>Limitations</h2>
+<ul>
+  <li>Table rows are not sorted (paragraphs inside one cell are)</li>
+  <li>Numbers sort as text, so <code>10</code> comes before <code>9</code></li>
+  <li>No date sort, last-name sort, or custom rules</li>
+</ul>
+
+<footer>
+  <a href="./privacy.html">Privacy Policy</a>
+  <a href="./terms.html">Terms of Service</a>
+  <a href="./support.html">Support</a>
+</footer>
+
+</body>
+</html>

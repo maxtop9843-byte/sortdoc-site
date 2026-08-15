@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SortDoc — Support</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; color: #202124; background: #fff;
+  }
+  @media (prefers-color-scheme: dark) { body { color: #e8eaed; background: #131314; } a { color: #8ab4f8; } th { border-color: #3c4043 !important; } td { border-color: #3c4043 !important; } }
+  h1 { font-size: 2rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.2rem; margin-top: 2.5rem; }
+  .updated { color: #5f6368; font-size: .9rem; margin-top: 0; }
+  @media (prefers-color-scheme: dark) { .updated { color: #9aa0a6; } }
+  ol, ul { padding-left: 1.25rem; }
+  li { margin: .4rem 0; }
+  code, kbd { background: rgba(127,127,127,.15); padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid #dadce0; vertical-align: top; }
+  th { font-weight: 600; }
+  .box { border-left: 3px solid #1a73e8; padding: .75rem 1rem; background: rgba(26,115,232,.07); border-radius: 0 6px 6px 0; }
+  footer { margin-top: 4rem; font-size: .9rem; color: #5f6368; border-top: 1px solid rgba(127,127,127,.25); padding-top: 1rem; }
+</style>
+</head>
+<body>
+
+<h1>SortDoc — Support</h1>
+<p class="updated">Last updated: 15 August 2026</p>
+
+<h2>How to use SortDoc</h2>
+<ol>
+  <li>Open a Google Doc.</li>
+  <li>Select the paragraphs or list items you want to sort. Selecting part of a line is fine —
+    SortDoc sorts the whole blocks your selection touches.</li>
+  <li>Choose <strong>Extensions → SortDoc → Sort A → Z</strong> (or <strong>Sort Z → A</strong>).</li>
+</ol>
+
+<div class="box">
+  SortDoc sorts <strong>whole paragraphs or list items</strong>, not the words inside a
+  paragraph. It moves each block together with its own formatting.
+</div>
+
+<h2>Sorting rules</h2>
+<table>
+  <tr><th>Rule</th><th>Behaviour</th></tr>
+  <tr><td>Capitalisation</td><td>Ignored when comparing, so <code>banana</code> and <code>Banana</code> are treated as equal</td></tr>
+  <tr><td>Leading/trailing spaces</td><td>Ignored when comparing, and never removed from your document</td></tr>
+  <tr><td>Accents and non-Latin text</td><td>Compared using locale-aware ordering</td></tr>
+  <tr><td>Identical values</td><td>Keep their original relative order, in both directions</td></tr>
+  <tr><td>Empty paragraphs</td><td>Sort first in A → Z, last in Z → A</td></tr>
+  <tr><td>Numbers</td><td>Compared as text, so <code>10</code> sorts before <code>9</code></td></tr>
+</table>
+
+<h2>Messages you might see</h2>
+<table>
+  <tr><th>Message</th><th>What it means</th></tr>
+  <tr><td><strong>Nothing selected</strong></td><td>No text was selected. Select the paragraphs you want to sort first.</td></tr>
+  <tr><td><strong>Nothing to sort</strong></td><td>Your selection covers only one block. Sorting needs at least two.</td></tr>
+  <tr><td><strong>Unsupported selection</strong></td><td>SortDoc cannot sort this selection safely, so it changed nothing. See below.</td></tr>
+</table>
+
+<h2>Why a selection might be refused</h2>
+<p>SortDoc refuses rather than risk damaging a document. A selection is refused when it:</p>
+<ul>
+  <li>spans more than one part of the document — for example two different table cells, or two
+    document tabs;</li>
+  <li>is not one continuous run of blocks, so something unselected sits in the middle;</li>
+  <li>mixes two different lists;</li>
+  <li>includes a block containing a footnote, page break, equation, inline drawing, or
+    horizontal rule, whose behaviour has not been verified.</li>
+</ul>
+<p>When a selection is refused, <strong>your document is not modified at all</strong>.</p>
+
+<h2>Undoing a sort</h2>
+<p>Press <kbd>Ctrl</kbd>+<kbd>Z</kbd> (<kbd>Cmd</kbd>+<kbd>Z</kbd> on Mac). An Apps Script edit
+may be recorded as more than one undo step, so you may need to press it more than once. Google
+Docs version history (<strong>File → Version history</strong>) can also restore an earlier
+state.</p>
+
+<h2>Known limitations</h2>
+<ul>
+  <li>Table <em>rows</em> are not sorted. Paragraphs inside a single cell can be sorted.</li>
+  <li>Numbers sort as text; natural number sort is not implemented.</li>
+  <li>Sorting by date, by last name, or by custom rules is not implemented.</li>
+  <li>Behaviour with Google Docs comments or suggestion mode attached to sorted blocks has not
+    been tested.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>SortDoc collects nothing, stores nothing, and sends nothing anywhere. It can only access the
+one document you run it in. See the <a href="./privacy.html">Privacy Policy</a>.</p>
+
+<h2>Contact and issue reporting</h2>
+<p>Email <a href="mailto:maxtop9843@gmail.com">maxtop9843@gmail.com</a>. To help diagnose a
+problem, please include what you selected, which command you chose, what happened, and what you
+expected instead.</p>
+
+<footer>SortDoc · <a href="./privacy.html">Privacy Policy</a> · <a href="./terms.html">Terms of Service</a></footer>
+
+</body>
+</html>
